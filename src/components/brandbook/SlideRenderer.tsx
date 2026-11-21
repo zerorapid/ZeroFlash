@@ -2,24 +2,8 @@ import React from 'react';
 import { SlideDefinition, SlideItem, BrandState } from '../../types/brandbook';
 import { GX, GY } from '../../utils/deckGenerator';
 import { isDark, norm } from '../../utils/colorUtils';
-import {
-  Image as ImageIcon,
-  X,
-  Target,
-  Gem,
-  Wind,
-  Compass,
-  Eye,
-  Sparkles,
-  Zap,
-  Shield,
-  Flame,
-  Heart,
-  Smile,
-  BookOpen,
-  PenTool,
-  Calendar,
-} from 'lucide-react';
+import * as LucideIcons from 'lucide-react';
+import { Image as ImageIcon, X } from 'lucide-react';
 import { SmartMockupRenderer } from './SmartMockupRenderer';
 
 interface SlideRendererProps {
@@ -97,36 +81,32 @@ export const SlideRenderer: React.FC<SlideRendererProps> = ({
       );
     }
 
-    if (it.k === 'ic') {
-      const iconMap: Record<string, React.ComponentType<{ className?: string; style?: React.CSSProperties }>> = {
-        target: Target,
-        gem: Gem,
-        wind: Wind,
-        compass: Compass,
-        eye: Eye,
-        sparkles: Sparkles,
-        zap: Zap,
-        shield: Shield,
-        flame: Flame,
-        heart: Heart,
-        smile: Smile,
-        book: BookOpen,
-        pen: PenTool,
-        calendar: Calendar,
-      };
-      const IconComponent = iconMap[it.name?.toLowerCase() || ''] || Sparkles;
+    if (it.k === "ic") {
+      const rawName = (it.name || "").trim().toLowerCase();
+      // Normalize to PascalCase (e.g. "layers" -> "Layers", "book-open" -> "BookOpen")
+      const pascalCase = rawName
+        .split(/[-_\s]+/)
+        .map(w => w.charAt(0).toUpperCase() + w.slice(1))
+        .join("");
+      
+      const IconComponent =
+        (LucideIcons as any)[pascalCase] ||
+        (LucideIcons as any)[rawName.charAt(0).toUpperCase() + rawName.slice(1)] ||
+        (LucideIcons as any)[it.name || ""] ||
+        LucideIcons.Sparkles;
+
       return (
         <div
           key={ix}
           style={{
             ...style,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: it.c || '#111827',
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: it.c || "#111827",
           }}
         >
-          <IconComponent style={{ width: '100%', height: '100%' }} />
+          <IconComponent style={{ width: "100%", height: "100%" }} />
         </div>
       );
     }
