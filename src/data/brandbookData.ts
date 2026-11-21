@@ -495,16 +495,6 @@ export const DEFAULT_BRAND_STATE: BrandState = {
     mc_hero: "/mockups/slab_hero.jpg",
 
     // Applications & Collateral
-    m_card: "/mockups/stationary.png",
-    m_letter: "/mockups/stationary.png",
-    m_env: "/mockups/stationary.png",
-    m_web: "/mockups/desktop.png",
-    m_app: "/mockups/phone_stone.jpg",
-    m_sign: "/mockups/building.png",
-    m_pack: "/mockups/box.png",
-    m_pack2: "/mockups/cylinder_box.jpg",
-    m_tshirt: "/mockups/tshirt.jpg",
-    m_hoodie: "/mockups/tshirt.jpg",
     m_cap2: "/mockups/cap.jpg",
 
     // Architectural Print & Publications (Replaced Sushi Menu with Real Stone Spec Sheets)
@@ -514,26 +504,6 @@ export const DEFAULT_BRAND_STATE: BrandState = {
     m_magazine: "/mockups/mockup-magazine.svg",
 
     // Outdoor & OOH
-    m_banner1: "/mockups/billboard.png",
-    m_banner2: "/mockups/desktop.png",
-    m_banner3: "/mockups/transit.jpg",
-    m_email: "/mockups/desktop.png",
-    m_newsletter: "/mockups/desktop.png",
-    m_display: "/mockups/transit.jpg",
-    m_booth: "/mockups/booth.jpg",
-    m_billboard: "/mockups/billboard.png",
-    m_rollup: "/mockups/booth.jpg",
-    m_van: "/mockups/building.png",
-    m_bus: "/mockups/transit.jpg",
-    m_bike: "/mockups/building.png",
-    m_storefront: "/mockups/building.png",
-    m_box: "/mockups/box.png",
-    m_bottle: "/mockups/bottle.jpg",
-    m_bag: "/mockups/paper_bag.jpg",
-    m_yt: "/mockups/desktop.png",
-    m_podcast: "/mockups/cylinder_box.jpg",
-    m_carousel: "/mockups/desktop.png",
-    m_ppt: "/mockups/desktop.png"
   },
   meta: {
     lg_primary: { kind: "svg", name: "vengo-granites-logo.svg" },
