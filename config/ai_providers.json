@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Free AI Providers & Inference Gateway Configuration",
+  "providers": [
+    {
+      "name": "Zhipu AI (GLM-4-Flash)",
+      "tier": "Free Unlimited",
+      "baseURL": "https://open.bigmodel.cn/api/paas/v4",
+      "model": "glm-4-flash",
+      "type": "openai-compatible",
+      "headers": {
+        "Authorization": "Bearer ${ZHIPU_API_KEY}"
+      },
+      "useCase": "Unlimited high-speed background drafting and classification"
+    },
+    {
+      "name": "Google AI Studio (Gemini 2.5)",
+      "tier": "Free Tier (15 RPM / 1M TPM)",
+      "baseURL": "https://generativelanguage.googleapis.com/v1beta",
+      "model": "gemini-2.5-pro",
+      "type": "google-genai",
+      "envKey": "GEMINI_API_KEY",
+      "useCase": "Deep reasoning, long-context code refactoring, and AEO optimization"
+    },
+    {
+      "name": "Groq LPU Inference",
+      "tier": "Free Tier (30 RPM)",
+      "baseURL": "https://api.groq.com/openai/v1",
+      "model": "llama-3.3-70b-versatile",
+      "type": "openai-compatible",
+      "headers": {
+        "Authorization": "Bearer ${GROQ_API_KEY}"
+      },
+      "useCase": "Sub-100ms real-time chat completions and hook synthesis"
+    },
+    {
+      "name": "Colibri Local Inference",
+      "tier": "100% Free & Local (Air-Gapped)",
+      "baseURL": "http://localhost:8080/v1",
+      "model": "glm-5.2-744b-moe-int4",
+      "type": "openai-compatible",
+      "command": "./coli serve --port 8080",
+      "useCase": "Zero-cloud private code generation on 32GB RAM local machines"
+    },
+    {
+      "name": "FreeLLMAPI Aggregator",
+      "tier": "Auto-Failover Multi-Provider Gateway",
+      "baseURL": "https://api.freellmapi.com/v1",
+      "model": "auto",
+      "type": "openai-compatible",
+      "useCase": "Automatic rate-limit failover across free provider tiers"
+    }
+  ]
+}

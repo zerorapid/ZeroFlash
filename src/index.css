@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Share+Tech+Mono&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+/* Official Stack Sans Headline CDN Webfont */
+@font-face {
+  font-family: 'Stack Sans Headline';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 700;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/stack-sans-headline:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+/* Official Stack Sans Notch CDN Webfont */
+@font-face {
+  font-family: 'Stack Sans Notch';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 700;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/stack-sans-notch:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+@theme {
+  --font-sans: "Stack Sans Headline", "Stack Sans Notch", "Plus Jakarta Sans", "Space Grotesk", sans-serif;
+  --font-display: "Stack Sans Headline", "Stack Sans Notch", "Plus Jakarta Sans", "Space Grotesk", sans-serif;
+  --font-mono: "Stack Sans Headline", "Stack Sans Notch", "Plus Jakarta Sans", "Space Grotesk", sans-serif;
+}
+
+/* Base styles tailored for reading on mobile screens */
+body {
+  background-color: #fbfbf9; /* Cozy, eye-safe, editorial off-white background */
+  color: #1f2022;            /* Luxurious charcoal grey for highest legibility and contrast */
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  text-rendering: optimizeLegibility;
+}
+
+/* Custom Markdown Content styling for blog content */
+.markdown-body {
+  font-family: var(--font-sans);
+  line-height: 1.75;
+  color: #2e3033;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4 {
+  font-family: var(--font-display);
+  color: #111111;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-top: 1.8em;
+  margin-bottom: 0.6em;
+}
+
+.markdown-body h1 {
+  font-size: 1.85rem;
+}
+
+.markdown-body h2 {
+  font-size: 1.5rem;
+  border-bottom: 1px solid #e5e5e0;
+  padding-bottom: 0.3em;
+}
+
+.markdown-body h3 {
+  font-size: 1.25rem;
+}
+
+.markdown-body p {
+  margin-top: 0;
+  margin-bottom: 1.25em;
+  font-size: 1.05rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.markdown-body p strong {
+  color: #111111;
+  font-weight: 600;
+}
+
+.markdown-body blockquote {
+  margin: 1.5em 0;
+  padding-left: 1.25em;
+  border-left: 3px solid #111111;
+  color: #555552;
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  margin-top: 0;
+  margin-bottom: 1.25em;
+  padding-left: 1.5em;
+}
+
+.markdown-body ul {
+  list-style-type: square;
+}
+
+.markdown-body ol {
+  list-style-type: decimal;
+}
+
+.markdown-body li {
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+  padding-left: 0.25em;
+}
+
+.markdown-body pre {
+  margin: 1.5em 0;
+  padding: 1rem;
+  background-color: #f4f3ee;
+  border: 1px solid #e5e5e0;
+  border-radius: 4px;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+}
+
+.markdown-body code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background-color: #f4f3ee;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  color: #c2410c;
+}
+
+.markdown-body pre code {
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+.markdown-body table {
+  width: 100%;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.markdown-body th {
+  background-color: #f4f3ee;
+  font-weight: 600;
+  text-align: left;
+  border-bottom: 2px solid #e5e5e0;
+  padding: 0.5rem;
+}
+
+.markdown-body td {
+  border-bottom: 1px solid #e5e5e0;
+  padding: 0.5rem;
+}
+
+/* Hide scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* 3D Transform and Apple/Airbnb Utilities */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.perspective-2000 {
+  perspective: 2000px;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Apple & Airbnb Soft Shadow System */
+.shadow-apple-sm {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.shadow-apple-card {
+  box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.05), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
+}
+
+.shadow-apple-hover {
+  box-shadow: 0 20px 45px -5px rgba(0, 0, 0, 0.08), 0 8px 18px -3px rgba(0, 0, 0, 0.04);
+}
+
+.shadow-apple-floating {
+  box-shadow: 0 25px 60px -10px rgba(0, 0, 0, 0.12), 0 12px 24px -5px rgba(0, 0, 0, 0.06);
+}
+
+/* Apple Frosted Glass Utilities */
+.glass-apple {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.glass-pill {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Airbnb Rausch Coral glow */
+.glow-rausch {
+  box-shadow: 0 8px 25px -4px rgba(255, 56, 92, 0.35);
+}
+
+/* Apple Keynote subtle mesh grid */
+.bg-grid-apple {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+}
+
+/* ─── Production 16:9 Landscape Vector PDF Print Engine ─── */
+@page {
+  size: 13.333in 7.5in;
+  margin: 0;
+}
+
+@media print {
+  * {
+    print-color-adjust: exact !important;
+    -webkit-print-color-adjust: exact !important;
+  }
+
+  html,
+  body,
+  #root {
+    height: auto !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  .print\:hidden {
+    display: none !important;
+  }
+
+  #printRoot {
+    display: block !important;
+    width: 13.333in !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+  }
+
+  .print-slide {
+    display: block !important;
+    width: 13.333in !important;
+    height: 7.5in !important;
+    aspect-ratio: 16 / 9 !important;
+    break-after: page !important;
+    page-break-after: always !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+  }
+
+  .print-slide:last-child {
+    break-after: auto !important;
+    page-break-after: auto !important;
+  }
+}
+

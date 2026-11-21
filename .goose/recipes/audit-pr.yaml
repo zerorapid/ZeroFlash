@@ -1,0 +1,10 @@
+name: Heuristic & Automated PR Audit
+version: "1.0.0"
+description: "Runs automated type verification and audits Nielsen UX heuristics across the local web application."
+tasks:
+  - name: "Compile & Type Verification"
+    prompt: "Run 'npm run lint' (tsc --noEmit) and 'npm run build' to verify zero compiler errors."
+  - name: "Heuristic UX Audit"
+    prompt: "Using Browser MCP, navigate to http://localhost:3000 to evaluate the landing page against Nielsen 10 UX heuristics, focusing on contrast, feedback latency, and 3D WebGL responsiveness."
+  - name: "Reporting"
+    prompt: "Generate a markdown summary report documenting performance, layout score, and Core Web Vitals interaction latency."

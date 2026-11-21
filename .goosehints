@@ -1,0 +1,17 @@
+# Goose AI Project Guidelines & Constraints (.goosehints)
+
+## Architecture & Frameworks
+- Frontend: React 19, TypeScript, Tailwind CSS v4, Motion (framer-motion v12).
+- 3D Engine: Three.js loaded dynamically via `src/components/threeUtils.ts` (Fast Refresh safe).
+- Backend: Express on Node with Vite HMR integration (`server.ts`).
+- Production Port: 3000.
+
+## Quality & Design Standards
+- Strictly enforce `DESIGN.md` tokens (Apple high-key `#F5F5F7`, `#1D1D1F`, Airbnb `#FF385C`).
+- Enforce the 8px grid layout scale.
+- Copy must maintain Apple Keynote brevity (<20 words per subhead).
+- Avoid AI slop: no purple-cyan neon gradients, no card-in-card clutter, no low-contrast text.
+
+## Commands
+- Build verification: `npm run lint` (`tsc --noEmit`) and `npm run build`.
+- Local development: `npm run dev`.

@@ -1,0 +1,1 @@
+{"name":"News Blog","description":"A minimalist, single-column full-stack news blog powered by an Express API reading local markdown files.","requestFramePermissions":[],"majorCapabilities":["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]}
