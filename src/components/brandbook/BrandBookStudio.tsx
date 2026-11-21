@@ -11,6 +11,7 @@ import { ImagePickerModal } from './ImagePickerModal';
 import { ProjectsModal } from './ProjectsModal';
 import { StudioSettingsModal } from './StudioSettingsModal';
 import { AuthModal } from './AuthModal';
+import { ExportPdfModal } from './ExportPdfModal';
 import { AuthGate } from './AuthGate';
 import { SettingsPage } from './SettingsPage';
 import { SettingsWorkspacePanel } from './SettingsWorkspacePanel';
@@ -105,6 +106,8 @@ export const BrandBookStudio: React.FC = () => {
   }, []);
 
   const [activePlaceholderId, setActivePlaceholderId] = React.useState<string>('m_ph1');
+  const [isPdfModalOpen, setIsPdfModalOpen] = useState(false);
+  const [slidesToPrint, setSlidesToPrint] = useState<number[] | null>(null);
 
   const handlePlaceholderClick = (placeholderId: string) => {
     setActivePlaceholderId(placeholderId);
@@ -145,20 +148,33 @@ export const BrandBookStudio: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [undo, redo, setIsAssistantOpen, setGuides]);
 
-  // Export Handlers
+  // Selective PDF Export Handlers
   const handleExportPdf = () => {
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(() => {
-        setTimeout(() => {
-          window.print();
-        }, 120);
-      });
-    } else {
+    setIsPdfModalOpen(true);
+  };
+
+  const handleConfirmPrint = (selectedIndices: number[]) => {
+    setSlidesToPrint(selectedIndices);
+    const trigger = () => {
       setTimeout(() => {
         window.print();
-      }, 120);
+      }, 160);
+    };
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(trigger);
+    } else {
+      trigger();
     }
   };
+
+  useEffect(() => {
+    const handleAfterPrint = () => {
+      setSlidesToPrint(null);
+    };
+    window.addEventListener("afterprint", handleAfterPrint);
+    return () => window.removeEventListener("afterprint", handleAfterPrint);
+  }, []);
 
   const handleExportPptx = async () => {
     // If window.PptxGenJS is available
@@ -328,26 +344,31 @@ export const BrandBookStudio: React.FC = () => {
         )}
       </div>
 
-      {/* 3. Dedicated 64-Slide Vector Print Stage (Print only) */}
+      {/* 3. Dedicated Selective Vector Print Stage (Print only) */}
       <div id="printRoot" className="hidden print:block print:w-[13.333in] print:m-0 print:p-0">
-        {slides.map((s, idx) => (
-          <div
-            key={idx}
-            className="print-slide @container"
-            style={{
-              width: '13.333in',
-              height: '7.5in',
-              background: s.bg,
-            }}
-          >
-            <SlideRenderer
-              slide={s}
-              slideIndex={idx}
-              brandState={state}
-              isPrint={true}
-            />
-          </div>
-        ))}
+        {slides.map((s, idx) => {
+          if (slidesToPrint !== null && !slidesToPrint.includes(idx)) {
+            return null;
+          }
+          return (
+            <div
+              key={idx}
+              className="print-slide @container"
+              style={{
+                width: '13.333in',
+                height: '7.5in',
+                background: s.bg,
+              }}
+            >
+              <SlideRenderer
+                slide={s}
+                slideIndex={idx}
+                brandState={state}
+                isPrint={true}
+              />
+            </div>
+          );
+        })}
       </div>
 
       {/* On-Device Assistant Floating Dock (Screen only) */}
@@ -439,6 +460,17 @@ export const BrandBookStudio: React.FC = () => {
           defaultTab={authModalTab}
           onSignIn={signIn}
           onSignUp={signUp}
+        />
+      </div>
+
+      {/* Selective PDF Export Modal (Screen only) */}
+      <div className="print:hidden">
+        <ExportPdfModal
+          isOpen={isPdfModalOpen}
+          onClose={() => setIsPdfModalOpen(false)}
+          slides={slides}
+          currentSlideIndex={activeSlide}
+          onExport={handleConfirmPrint}
         />
       </div>
     </div>

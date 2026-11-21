@@ -459,10 +459,29 @@ export const DEFAULT_BRAND_STATE: BrandState = {
   hf: "Space Grotesk",
   bf: "Inter",
   img: {
-    lg_concept: CONCEPT,
+    // Logo Lockups & Versions
+    lg_concept: "/mockups/logo-concept.svg",
+    lk_h: "/mockups/logo-lockup-horizontal.svg",
+    lk_s: "/mockups/logo-lockup-stacked.svg",
+    lk_m: "/mockups/logo-version-primary.svg",
+    lk_w: "/mockups/logo-lockup-wordmark.svg",
+    lg_primary: "/mockups/logo-version-primary.svg",
+    lg_secondary: "/mockups/logo-version-secondary.svg",
+    lg_icon: "/mockups/logo-version-icon.svg",
+    lg_mono: "/mockups/logo-version-mono.svg",
+    photo_logo: "/mockups/logo-photo-granite.svg",
+
+    // Logo Do's & Don'ts
+    r1: "/mockups/logo-do-1.svg",
+    r2: "/mockups/logo-do-2.svg",
+    r3: "/mockups/logo-do-3.svg",
+    r4: "/mockups/logo-dont-1.svg",
+    r5: "/mockups/logo-dont-2.svg",
+    r6: "/mockups/logo-dont-3.svg",
+
+    // Photography & Stone Slabs
     m_brand_hero: "/mockups/granite_hero.jpg",
     photo_hero: "/mockups/granite_hero.jpg",
-    photo_logo: "/mockups/slab_hero.jpg",
     m_img1: "/mockups/slab_black.jpg",
     m_img2: "/mockups/slab_gold.jpg",
     m_ph1: "/mockups/slab_hero.jpg",
@@ -474,6 +493,8 @@ export const DEFAULT_BRAND_STATE: BrandState = {
     pu_b: "/mockups/desktop.png",
     pu_c: "/mockups/slab_macro.jpg",
     mc_hero: "/mockups/slab_hero.jpg",
+
+    // Applications & Collateral
     m_card: "/mockups/stationary.png",
     m_letter: "/mockups/stationary.png",
     m_env: "/mockups/stationary.png",
@@ -485,10 +506,14 @@ export const DEFAULT_BRAND_STATE: BrandState = {
     m_tshirt: "/mockups/tshirt.jpg",
     m_hoodie: "/mockups/tshirt.jpg",
     m_cap2: "/mockups/cap.jpg",
-    m_book: "/mockups/book_cover.jpg",
-    m_brochure: "/mockups/stationary.png",
-    m_poster: "/mockups/billboard.png",
-    m_magazine: "/mockups/book_cover.jpg",
+
+    // Architectural Print & Publications (Replaced Sushi Menu with Real Stone Spec Sheets)
+    m_book: "/mockups/mockup-book.svg",
+    m_brochure: "/mockups/mockup-brochure.svg",
+    m_poster: "/mockups/mockup-poster.svg",
+    m_magazine: "/mockups/mockup-magazine.svg",
+
+    // Outdoor & OOH
     m_banner1: "/mockups/billboard.png",
     m_banner2: "/mockups/desktop.png",
     m_banner3: "/mockups/transit.jpg",

@@ -715,7 +715,7 @@ export function generateDeck(S: BrandState, OV: Record<number, SlideOverride>): 
     ]);
 
     // 05. Visual Language
-    sec('05', 'Visual language', 'Imagery, a real icon system, patterns and our mascot.');
+    sec('05', 'Visual language', (S.mcName && S.mcName !== 'Nori') ? 'Imagery, a real icon system, patterns and our mascot.' : 'Imagery, a real icon system, patterns and architectural stone specifications.');
     {
       const it: SlideItem[] = [];
       lines(S.imgp).slice(0, 3).forEach((l, i) => {
@@ -799,39 +799,81 @@ export function generateDeck(S: BrandState, OV: Record<number, SlideOverride>): 
       P(8.5, 1.7, 4.03, 2.32, 'pu_b', 'Pattern on social'),
       P(8.5, 4.23, 4.03, 2.32, 'pu_c', 'Pattern as background'),
     ]);
-    sl('Meet ' + S.mcName, [
-      P(0.8, 1.7, 5.6, 4.85, 'mc_hero', 'Mascot illustration', { m: 'contain' }),
-      T(S.mcName, 6.9, 1.8, 5.6, 0.9, { f: 'h', s: 38, b: 1, c: p }),
-      T(S.mcStory, 6.9, 2.9, 5.6, 2.6, { s: 14, c: INK }),
-      T(S.mcTraits, 6.9, 5.7, 5.6, 0.4, { s: 11.5, c: MUT, b: 1 }),
-    ]);
-    {
-      const it: SlideItem[] = ['Waving', 'Thinking', 'Celebrating', 'Surprised'].map((n, i) =>
-        P(0.8 + i * 3.01, 1.7, 2.72, 4.05, 'mc_p' + i, n, { m: 'contain' })
-      );
-      it.push(T('Use approved poses only. Request new poses from the brand team.', 0.8, 5.95, 11.7, 0.4, { s: 11.5, c: MUT }));
-      sl('Poses & expressions', it);
-    }
-    {
-      const it: SlideItem[] = [];
-      [
-        ['Do', S.mcDo, OK, '✓', 0.8, 'mc_do'],
-        ['Don’t', S.mcDont, BAD, '✕', 6.9, 'mc_dt'],
-      ].forEach(col => {
-        const x = col[4] as number;
-        it.push(
-          T((col[0] as string).toUpperCase(), x, 1.6, 5, 0.3, { s: 10.5, b: 1, c: col[2] as string }),
-          P(x, 2.0, 2.7, 2.5, col[5] + '0', 'Example', { m: 'contain' }),
-          P(x + 2.9, 2.0, 2.7, 2.5, col[5] + '1', 'Example', { m: 'contain' })
+        if (S.mcName && S.mcName.trim().length > 0 && S.mcName !== "Nori") {
+      sl("Meet " + S.mcName, [
+        P(0.8, 1.7, 5.6, 4.85, "mc_hero", "Mascot illustration", { m: "contain" }),
+        T(S.mcName, 6.9, 1.8, 5.6, 0.9, { f: "h", s: 38, b: 1, c: p }),
+        T(S.mcStory, 6.9, 2.9, 5.6, 2.6, { s: 14, c: INK }),
+        T(S.mcTraits, 6.9, 5.7, 5.6, 0.4, { s: 11.5, c: MUT, b: 1 }),
+      ]);
+      {
+        const it: SlideItem[] = ["Waving", "Thinking", "Celebrating", "Surprised"].map((n, i) =>
+          P(0.8 + i * 3.01, 1.7, 2.72, 4.05, "mc_p" + i, n, { m: "contain" })
         );
-        lines(col[1] as string).slice(0, 3).forEach((w, i) =>
+        it.push(T("Use approved poses only. Request new poses from the brand team.", 0.8, 5.95, 11.7, 0.4, { s: 11.5, c: MUT }));
+        sl("Poses & expressions", it);
+      }
+      {
+        const it: SlideItem[] = [];
+        [
+          ["Do", S.mcDo, OK, "✓", 0.8, "mc_do"],
+          ["Don’t", S.mcDont, BAD, "✕", 6.9, "mc_dt"],
+        ].forEach(col => {
+          const x = col[4] as number;
           it.push(
-            T(col[3] as string, x, 4.85 + i * 0.55, 0.4, 0.4, { s: 13, b: 1, c: col[2] as string }),
-            T(w, x + 0.5, 4.85 + i * 0.55, 5.1, 0.5, { s: 12, c: INK })
-          )
-        );
-      });
-      sl('Mascot do’s & don’ts', it);
+            T((col[0] as string).toUpperCase(), x, 1.6, 5, 0.3, { s: 10.5, b: 1, c: col[2] as string }),
+            P(x, 2.0, 2.7, 2.5, col[5] + "0", "Example", { m: "contain" }),
+            P(x + 2.9, 2.0, 2.7, 2.5, col[5] + "1", "Example", { m: "contain" })
+          );
+          lines(col[1] as string).slice(0, 3).forEach((w, i) =>
+            it.push(
+              T(col[3] as string, x, 4.85 + i * 0.55, 0.4, 0.4, { s: 13, b: 1, c: col[2] as string }),
+              T(w, x + 0.5, 4.85 + i * 0.55, 5.1, 0.5, { s: 12, c: INK })
+            )
+          );
+        });
+        sl("Mascot do’s & don’ts", it);
+      }
+    } else {
+      sl("Surface finishes", [
+        P(0.8, 1.7, 2.72, 3.8, "m_ph1", "Polished Finish", { m: "cover" }),
+        T("Polished", 0.8, 5.65, 2.72, 0.35, { f: "h", s: 15, b: 1, c: INK }),
+        T("Mirror gloss (>95 GU), zero porosity, deep jet crystalline reflectivity for cladding.", 0.8, 6.05, 2.72, 0.65, { s: 11, c: MUT }),
+        P(3.81, 1.7, 2.72, 3.8, "m_ph2", "Honed Finish", { m: "cover" }),
+        T("Honed", 3.81, 5.65, 2.72, 0.35, { f: "h", s: 15, b: 1, c: INK }),
+        T("Smooth matte satin surface without specular reflection for interior flooring.", 3.81, 6.05, 2.72, 0.65, { s: 11, c: MUT }),
+        P(6.82, 1.7, 2.72, 3.8, "m_ph3", "Flamed Finish", { m: "cover" }),
+        T("Flamed", 6.82, 5.65, 2.72, 0.35, { f: "h", s: 15, b: 1, c: INK }),
+        T("High-heat thermal shock texture for external paving with maximum wet slip resistance.", 6.82, 6.05, 2.72, 0.65, { s: 11, c: MUT }),
+        P(9.83, 1.7, 2.72, 3.8, "m_ph4", "Leathered / Brushed", { m: "cover" }),
+        T("Leathered", 9.83, 5.65, 2.72, 0.35, { f: "h", s: 15, b: 1, c: INK }),
+        T("Tactile rippled velvet texture highlighting natural crystalline relief.", 9.83, 6.05, 2.72, 0.65, { s: 11, c: MUT }),
+      ]);
+      sl("Dimensional tolerances", [
+        R(0.8, 1.7, 5.6, 4.85, BG, { line: LN }),
+        P(1.0, 1.9, 5.2, 4.45, "pu_c", "Macro Crystalline Texture", { m: "cover" }),
+        T("CALIBRATION STANDARDS", 6.9, 1.8, 5.6, 0.35, { s: 10.5, b: 1, c: a }),
+        T("Wire-saw tolerance ±1.0 mm across 3200 × 1950 mm gangsaw slabs.", 6.9, 2.25, 5.6, 0.9, { f: "h", s: 16, b: 1, c: INK }),
+        R(6.9, 3.3, 5.6, 0.05, LN),
+        T("Diagonal Squareness", 6.9, 3.5, 5.6, 0.35, { f: "h", s: 13, b: 1, c: p }),
+        T("Maximum diagonal deviation shall not exceed 1.5 mm per linear meter.", 6.9, 3.85, 5.6, 0.55, { s: 11.5, c: MUT }),
+        T("Edge Dressing & Chamfer", 6.9, 4.5, 5.6, 0.35, { f: "h", s: 13, b: 1, c: p }),
+        T("Arris bevels 1.0–3.0 mm calibrated on CNC automated bridge cutters.", 6.9, 4.85, 5.6, 0.55, { s: 11.5, c: MUT }),
+        T("Water Absorption & Density", 6.9, 5.5, 5.6, 0.35, { f: "h", s: 13, b: 1, c: p }),
+        T("ASTM C97 density 3.05 g/cm³ with water absorption rating < 0.08%.", 6.9, 5.85, 5.6, 0.55, { s: 11.5, c: MUT }),
+      ]);
+      sl("Pit-to-port logistics", [
+        P(0.8, 1.7, 7.4, 4.85, "m_brand_hero", "Quarry logistics", { m: "cover" }),
+        T("SOVEREIGN TRANSIT", 8.6, 1.8, 3.9, 0.35, { s: 10.5, b: 1, c: a }),
+        T("Direct from Malkangiri to Deepwater Berths", 8.6, 2.25, 3.9, 0.8, { f: "h", s: 16, b: 1, c: INK }),
+        R(8.6, 3.2, 3.9, 0.05, LN),
+        T("Owned Haulage Fleet", 8.6, 3.4, 3.9, 0.35, { f: "h", s: 13, b: 1, c: p }),
+        T("Heavy multi-axle low-bed trailers dedicated to single-deposit block transit.", 8.6, 3.75, 3.9, 0.55, { s: 11.5, c: MUT }),
+        T("Export Seaports", 8.6, 4.4, 3.9, 0.35, { f: "h", s: 13, b: 1, c: p }),
+        T("Dedicated export clearance handling at Kakinada Port & Visakhapatnam Port.", 8.6, 4.75, 3.9, 0.55, { s: 11.5, c: MUT }),
+        T("Container Packing", 8.6, 5.4, 3.9, 0.35, { f: "h", s: 13, b: 1, c: p }),
+        T("Seaworthy ISPM-15 heat-treated fumigated wooden A-frames with steel strap banding.", 8.6, 5.75, 3.9, 0.55, { s: 11.5, c: MUT }),
+      ]);
     }
 
     // 06. Applications Section
