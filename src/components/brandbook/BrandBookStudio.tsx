@@ -154,11 +154,12 @@ export const BrandBookStudio: React.FC = () => {
   };
 
   const handleConfirmPrint = (selectedIndices: number[]) => {
+    setIsPdfModalOpen(false);
     setSlidesToPrint(selectedIndices);
     const trigger = () => {
       setTimeout(() => {
         window.print();
-      }, 160);
+      }, 250);
     };
 
     if (document.fonts && document.fonts.ready) {

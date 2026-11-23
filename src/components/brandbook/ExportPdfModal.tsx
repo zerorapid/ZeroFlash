@@ -114,12 +114,11 @@ export const ExportPdfModal: React.FC<ExportPdfModalProps> = ({
 
   const handleConfirm = () => {
     if (activeExportIndices.length === 0) return;
-    setIsExporting(true);
-    onExport(activeExportIndices);
+    const indices = [...activeExportIndices];
+    onClose();
     setTimeout(() => {
-      setIsExporting(false);
-      onClose();
-    }, 400);
+      onExport(indices);
+    }, 200);
   };
 
   return (

@@ -242,6 +242,20 @@ body {
     -webkit-print-color-adjust: exact !important;
   }
 
+  /* Strictly suppress all Radix portals, modals, overlays, and dialogs */
+  body > *:not(#root) {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  [data-radix-portal],
+  [role="dialog"],
+  [role="alertdialog"],
+  div[data-state="open"] {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
   html,
   body,
   #root {
